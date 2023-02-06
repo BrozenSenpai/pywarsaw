@@ -8,9 +8,9 @@ from pywarsaw.exceptions import WrongDirectory
 
 
 def test_path_create():
-    output = "tests/resources/pywarsaw_cache"
-    assert Client.path_create("tests/resources") == output
-    assert Client.path_create("tests/resources/") == output
+    output = "tests/pywarsaw_cache"
+    assert Client.path_create("tests/") == output
+    assert Client.path_create("tests") == output
 
 
 def test_path_create_wrong_dir():
@@ -21,7 +21,7 @@ def test_path_create_wrong_dir():
 @pytest.mark.asyncio
 async def test_cache_enable_creates_sqlite_backed():
     client = Client()
-    await client.cache_enable(path="./tests/resources/")
+    await client.cache_enable(path="./tests/")
     assert isinstance(client.backend, SQLiteBackend)
     await client.close()
 
@@ -57,7 +57,7 @@ async def test_get_without_caching():
 async def test_get_with_caching():
     with aioresponses.aioresponses() as m:
         client = Client()
-        await client.cache_enable(path="./tests/resources/", force_clear=True)
+        await client.cache_enable(path="./tests/", force_clear=True)
         m.get("http://example.com", payload=dict(name="charmander"))
         response = await client._get("http://example.com")
         assert response == dict(name="charmander")
