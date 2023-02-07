@@ -1,5 +1,5 @@
 # pywarsaw
-![actions](https://github.com/BrozenSenpai/pywarsaw/actions/workflows/python-package.yml/badge.svg)[![Project Status: WIP – Initial development is in progress, but there has not yet been a stable, usable release suitable for the public.](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostatus.org/#wip)
+![actions](https://github.com/BrozenSenpai/pywarsaw/actions/workflows/python-package.yml/badge.svg)[![Project Status: WIP – Initial development is in progress, but there has not yet been a stable, usable release suitable for the public.](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostatus.org/#wip)[![Documentation Status](https://readthedocs.org/projects/pywarsaw/badge/?version=latest)](https://pywarsaw.readthedocs.io/en/latest/?badge=latest)
 
 An unofficial asynchronous API wrapper for [Warsaw Open Data](https://api.um.warszawa.pl/).
 
