@@ -48,7 +48,7 @@ Warsaw, with caching enabled like this:
        client = Mermaid(api_key="YOUR_API_KEY")
        await client.cache_enable()
 
-       result = await client.get_air_qualit()
+       result = await client.get_air_quality()
        
        await client.close()
 
