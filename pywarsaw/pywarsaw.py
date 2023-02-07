@@ -284,7 +284,7 @@ class Mermaid(Client):
         """Retrieves a list of trees from a specified endpoint using provided parameters.
 
         Args:
-            limit (int, str, None: The maximum number of trees to return.
+            limit (int, str, None): The maximum number of trees to return.
                 If not provided, defaults to None.
             q (str, None): Search query to filter trees by.
                 If not provided, defaults to None.
@@ -338,7 +338,7 @@ class Mermaid(Client):
         """Retrieves a list of trees groups from a specified endpoint using provided parameters.
 
         Args:
-            limit (int, str, None: The maximum number of trees groups to return.
+            limit (int, str, None): The maximum number of trees groups to return.
                 If not provided, defaults to None.
             q (str, None): Search query to filter trees groups by.
                 If not provided, defaults to None.
@@ -389,7 +389,7 @@ class Mermaid(Client):
         """Retrieves a list of munincipal wastes from a specified endpoint using provided parameters.
 
         Args:
-            limit (int, str, None: The maximum number of munincipal wastes to return.
+            limit (int, str, None): The maximum number of munincipal wastes to return.
                 If not provided, defaults to None.
             q (str, None): Search query to filter munincipal wastes by.
                 If not provided, defaults to None.
@@ -643,6 +643,21 @@ class Mermaid(Client):
         circle: Union[str, None] = None,
         query_filter: Union[str, None] = None,
     ):
+        """Retrieves a list of cycle tracks.
+
+        Args:
+            limit (int, str, None): The maximum number of tracks to return.
+                If not provided, defaults to None.
+            bbox (str, None): Coordinates (min_lol, min_lat, max_lon, max lat)
+                of the search area defined by a rectangle. In not provided, defaults to None.
+            circle(str, None) Coordinates of the center of a circular area and its radius in meters.
+                If not provided, defaults to None.
+            query_filter (str, None): a special XML format used to filter query results.
+
+        Returns:
+            list[CycleTrack]: A list of cycle track objects.
+
+        """
         url = Mermaid._build_url(
             endpoint="wfsstore_get",
             id="8a235d27-b96a-4876-9b92-9e164940c9b6",
@@ -673,6 +688,21 @@ class Mermaid(Client):
         circle: Union[str, None] = None,
         query_filter: Union[str, None] = None,
     ):
+        """Retrieves a list of cycle stations.
+
+        Args:
+            limit (int, str, None): The maximum number of stations to return.
+                If not provided, defaults to None.
+            bbox (str, None): Coordinates (min_lol, min_lat, max_lon, max lat)
+                of the search area defined by a rectangle. In not provided, defaults to None.
+            circle(str, None) Coordinates of the center of a circular area and its radius in meters.
+                If not provided, defaults to None.
+            query_filter (str, None): a special XML format used to filter query results.
+
+        Returns:
+            list[CycleStation]: A list of cycle stations objects.
+
+        """
         url = Mermaid._build_url(
             endpoint="wfsstore_get",
             id="a08136ec-1037-4029-9aa5-b0d0ee0b9d88",
@@ -705,6 +735,21 @@ class Mermaid(Client):
         circle: Union[str, None] = None,
         query_filter: Union[str, None] = None,
     ):
+        """Retrieves a list of parking lots.
+
+        Args:
+            limit (int, str, None): The maximum number of parking lots to return.
+                If not provided, defaults to None.
+            bbox (str, None): Coordinates (min_lol, min_lat, max_lon, max lat)
+                of the search area defined by a rectangle. In not provided, defaults to None.
+            circle(str, None) Coordinates of the center of a circular area and its radius in meters.
+                If not provided, defaults to None.
+            query_filter (str, None): a special XML format used to filter query results.
+
+        Returns:
+            list[ParkingLot]: A list of parking lot objects.
+
+        """
         url = Mermaid._build_url(
             endpoint="wfsstore_get",
             id="157648fd-a603-4861-af96-884a8e35b155",
@@ -738,6 +783,21 @@ class Mermaid(Client):
         circle: Union[str, None] = None,
         query_filter: Union[str, None] = None,
     ):
+        """Retrieves a list of subway entrances.
+
+        Args:
+            limit (int, str, None): The maximum number of entrances to return.
+                If not provided, defaults to None.
+            bbox (str, None): Coordinates (min_lol, min_lat, max_lon, max lat)
+                of the search area defined by a rectangle. In not provided, defaults to None.
+            circle(str, None) Coordinates of the center of a circular area and its radius in meters.
+                If not provided, defaults to None.
+            query_filter (str, None): a special XML format used to filter query results.
+
+        Returns:
+            list[SubwayEntrance]: A list of subway entrance objects.
+
+        """
         url = Mermaid._build_url(
             endpoint="wfsstore_get",
             id="0ac7f6d1-a26b-430f-9e3d-a41c5356b9a3",
@@ -760,6 +820,19 @@ class Mermaid(Client):
         sort_by: Union[str, None] = None,
         current_day: bool = False,
     ):
+        """Retrieves a bus stops information.
+
+        Args:
+            page (int, str, None): Page. If not provided, defaults to None.
+            size (int, str, None): Size. If not provided, defaults to None.
+            sort_by (str, None): A field to sort by. If not provided, defaults to None.
+            current_day (bool): Return an information for a current day only.
+                If not provided, defaults to False.
+
+        Returns:
+            list[StopInfo]: List of stop info objects.
+
+        """
         res_id = (
             "ab75c33d-3a26-4342-b36a-6e5fef0a3ac3"
             if not current_day
@@ -800,6 +873,21 @@ class Mermaid(Client):
         circle: Union[str, None] = None,
         query_filter: Union[str, None] = None,
     ):
+        """Retrieves a list of theaters.
+
+        Args:
+            limit (int, str, None): The maximum number of theaters to return.
+                If not provided, defaults to None.
+            bbox (str, None): Coordinates (min_lol, min_lat, max_lon, max lat)
+                of the search area defined by a rectangle. In not provided, defaults to None.
+            circle(str, None) Coordinates of the center of a circular area and its radius in meters.
+                If not provided, defaults to None.
+            query_filter (str, None): a special XML format used to filter query results.
+
+        Returns:
+            list[Theather]: A list of theaters objects.
+
+        """
 
         url = Mermaid._build_url(
             endpoint="wfsstore_get",
@@ -837,6 +925,19 @@ class Mermaid(Client):
         q: Union[str, None] = None,
         filters: Union[dict, None] = None,
     ):
+        """Retrieves an internet access of schools information.
+
+        Args:
+            limit (int, str, None): The maximum number of objects to return.
+                If not provided, defaults to None
+            q (str, None): Search query to filter objects by.
+                If not provided, defaults to None.
+            filters (dict, None): Additional filters to apply to the search.
+                If not provided, defaults to None.
+
+        Returns:
+            list[InternetAccess]: A list of internet access objects.
+        """
         url = Mermaid._build_url(
             endpoint="datastore_search",
             resource_id="0a131e16-ec7f-4502-9b62-8f8af58d8cfd",
@@ -903,6 +1004,19 @@ class Mermaid(Client):
         q: Union[str, None] = None,
         filters: Union[dict, None] = None,
     ):
+        """Retrieves a purposes of computers in schools.
+
+        Args:
+            limit (int, str, None): The maximum number of objects to return.
+                If not provided, defaults to None
+            q (str, None): Search query to filter objects by.
+                If not provided, defaults to None.
+            filters (dict, None): Additional filters to apply to the search.
+                If not provided, defaults to None.
+
+        Returns:
+            list[ComputerPurpose]: A list of internet access objects.
+        """
         url = Mermaid._build_url(
             endpoint="datastore_search",
             resource_id="e22be977-f15d-42e6-843a-55fd0a0d756e",

@@ -1,9 +1,11 @@
 # pywarsaw
-![actions](https://github.com/BrozenSenpai/pywarsaw/actions/workflows/python-package.yml/badge.svg)
+![actions](https://github.com/BrozenSenpai/pywarsaw/actions/workflows/python-package.yml/badge.svg)[![Project Status: WIP – Initial development is in progress, but there has not yet been a stable, usable release suitable for the public.](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostatus.org/#wip)
 
 An unofficial asynchronous API wrapper for [Warsaw Open Data](https://api.um.warszawa.pl/).
 
 Created mainly for learning purposes.
+
+Package is still in progress, check the work status in the *currently covered* section.
 
 ## Features
 - **Asynchronous**: designed to work with asyncio
@@ -33,7 +35,7 @@ async def main():
     client = Mermaid(api_key="YOUR_API_KEY")
     await client.cache_enable()
 
-    result = await client.get_air_qualit()
+    result = await client.get_air_quality()
     
     await client.close()
 
