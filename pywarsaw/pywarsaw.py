@@ -97,14 +97,17 @@ class Mermaid(Client):
             "Błędna metoda lub parametry wywołania",
             "Wfs error: IllegalArgumentException: FeatureMember list is empty",
         ):
+            await super().close()
             raise WrongQueryParameters()
 
         if res["result"] == "false" and res["error"] == "Błędny apikey lub jego brak":
+            await super().close()
             raise WrongAPIKey()
         if (
             res["result"] == "false"
             and res["error"] == "Nieautoryzowany dostęp do danych"
         ):
+            await super().close()
             raise UnauthorizedAccess()
 
         return res

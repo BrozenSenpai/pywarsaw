@@ -45,7 +45,7 @@ Warsaw, with caching enabled like this:
    import pywarsaw
 
    async def main():
-       client = Mermaid(api_key="YOUR_API_KEY")
+       client = pywarsaw.Mermaid(api_key="YOUR_API_KEY")
        await client.cache_enable()
 
        result = await client.get_air_quality()
@@ -58,7 +58,7 @@ Or with the context manager:
 
 .. code:: python
 
-   async with Mermaid(api_key="YOUR_API_KEY") as client:
+   async with pywarsaw.Mermaid(api_key="YOUR_API_KEY") as client:
        await client.cache_enable()
        
        result = await client.get_air_quality()
