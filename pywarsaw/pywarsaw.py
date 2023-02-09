@@ -29,6 +29,10 @@ from .objects import (
     Theater,
     InternetAccess,
     ComputerPurpose,
+    RoadWorksCategory,
+    RoadWorksCompany,
+    RoadWorksDistrict,
+    RoadWorksInvestment,
 )
 
 
@@ -1072,6 +1076,128 @@ class Mermaid(Client):
                 student_category=x["Kategoria uczniów"],
                 school_specificity=x["Specyfika szkoły"],
                 institution_type=x["Rodzaj placówki"],
+            )
+            for x in response
+        ]
+
+    async def get_road_works_companies(self):
+        """Retrieves a companies performing road construction works.
+
+
+        Returns:
+            list[RoadWorksCompany]: A list of the companies.
+        """
+
+        url = Mermaid._build_url(
+            endpoint="get_companies",
+            resource_id="2aa01577-9f24-4b8e-83f5-d3d15f6d094b",
+            apikey=self.api_key,
+        )
+
+        response = await self._get_data(url)
+        response = response["result"]["Items"]["ComboItem"]
+
+        return [RoadWorksCompany(name=x["Value"], code=x["Code"]) for x in response]
+
+    async def get_road_works_categories(self):
+        """Retrieves road constructuction works categories.
+
+
+        Returns:
+            list[RoadWorksCategories]: A list of the categories.
+        """
+
+        url = Mermaid._build_url(
+            endpoint="get_categories_tree",
+            resource_id="e1c8fb95-9979-418d-bf5b-6bdfd586555b",
+            apikey=self.api_key,
+        )
+
+        response = await self._get_data(url)
+        response = response["result"]["CategoryTreeNode"]
+
+        return [
+            RoadWorksCategory(
+                identifier=x["ID"],
+                parent_id=x["ParentID"] if isinstance(x["ParentID"], str) else None,
+                name=x["Name"],
+                special_mode_code=x.get("SpecialModeCode"),
+            )
+            for x in response
+        ]
+
+    async def get_road_works_districts(self):
+        """Retrieves a districts with road construction works.
+
+
+        Returns:
+            list[RoadWorksDistrict]: A list of the districts.
+        """
+
+        url = Mermaid._build_url(
+            endpoint="get_districts",
+            resource_id="f3469922-27e3-4d2f-811d-8efa2e448606",
+            apikey=self.api_key,
+        )
+
+        response = await self._get_data(url)
+        response = response["result"]["Items"]["ComboItem"]
+
+        return [RoadWorksCompany(name=x["Value"], code=x["Code"]) for x in response]
+
+    async def get_road_works_investments(
+        self,
+        page_size: Union[str, int] = 2,
+        start_index: Union[str, int, None] = None,
+        investment_name: Union[str, None] = None,
+        street_name: Union[str, None] = None,
+        company_code: Union[str, int, None] = None,
+        investment_number: Union[str, int, None] = None,
+    ):
+        """Retrieves a road works investments.
+
+        Args:
+            page_size (str, int): Count of elements on the page.
+                If not provided, defaults to 2 - otherwise it would be empty.
+            start_index (str, int, None): Current page number.
+                If not provided, defaults to None.
+            investment_name (str, None): Name of the investment to search.
+                If not provided, defaults to None.
+            street_name (str, None): Name of the street to search.
+                If not provided, defaults to None.
+            company_code (str, int, None): Code of the company to search.
+                If not provided, defaults to None.
+            investment_number (str, int, None): Number of the investment to search.
+                If not provided, defaults to None.
+
+        Returns:
+            list[RoadWorksInvestment]: A list of the investments.
+        """
+
+        url = Mermaid._build_url(
+            endpoint="get_open_invests",
+            resource_id="26b9ade1-f5d4-439e-84b4-9af37ab7ebf1",
+            apikey=self.api_key,
+            pageSize=page_size,
+            StartIndex=start_index,
+            investmentName=investment_name,
+            streetName=street_name,
+            companyCode=company_code,
+            investmentNumber=investment_number,
+        )
+
+        response = await self._get_data(url)
+        response = response["result"]["Items"]["InvestItem"]
+        response = [response] if isinstance(response, dict) else response
+
+        return [
+            RoadWorksInvestment(
+                identifier=x["ID"],
+                name=x["Name"],
+                street=x["Street"],
+                start_date=x["StartDate"],
+                end_date=x["EndDate"],
+                last_modify_date=x["LastModifyDate"],
             )
             for x in response
         ]

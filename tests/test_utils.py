@@ -8,6 +8,7 @@ from pywarsaw.utils import (
     to_datetime_with_12,
     to_time,
     comma_number_to_float,
+    to_datetime_with_t,
 )
 
 flat_dict_data = [
@@ -69,6 +70,13 @@ def test_to_time():
     assert to_time(None) == None
 
 
-def comma_number_to_float():
+def test_comma_number_to_float():
     number_str = "21,15"
     assert comma_number_to_float(number_str) == 21.15
+
+
+def test_to_datetime_with_t():
+    number_str = "2023-02-09T08:33:42"
+    time_obj = datetime.datetime.strptime(number_str, "%Y-%m-%dT%H:%M:%S")
+    assert to_datetime_with_t(number_str) == time_obj
+    assert to_datetime_with_t(None) == None

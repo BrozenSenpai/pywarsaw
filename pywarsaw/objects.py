@@ -11,6 +11,7 @@ from .utils import (
     to_time,
     comma_number_to_float,
     to_datetime_with_12,
+    to_datetime_with_t,
 )
 
 
@@ -48,16 +49,6 @@ class DTO:
     def to_json(self) -> str:
         """Convert object to a json string"""
         return JSONEncoder().encode(self)
-
-
-# @define
-# class Theater(DTO):
-#     object_id: str
-#     number: str
-#     phone_fax: str
-#     website: Optional[str] = None
-#     administrative_unit: str
-#     # to do
 
 
 # ECOLOGY OBJECTS
@@ -830,3 +821,71 @@ class ComputerPurpose(DTO):
     student_category: str
     school_specificity: str
     institution_type: str
+
+
+@define
+class RoadWorksCompany(DTO):
+    """Company performing road construction works.
+
+    The following information is available:
+        * name
+        * code
+
+    """
+
+    name: str
+    code: str
+
+
+@define
+class RoadWorksCategory(DTO):
+    """The road constructuction works category.
+
+    The following information is available:
+        * identifier
+        * parent_id - parent category id
+        * name
+        * special_mode_code - type
+
+    """
+
+    identifier: str
+    parent_id: Union[str, None]
+    name: str
+    special_mode_code: Union[str, None]
+
+
+@define
+class RoadWorksDistrict(DTO):
+    """The district.
+
+    The following information is available:
+        * name
+        * code
+
+    """
+
+    name: str
+    code: str
+
+
+@define
+class RoadWorksInvestment(DTO):
+    """The investments.
+
+    The following information is available:
+        * identifier
+        * name
+        * street
+        * start_date
+        * end_date
+        * last_modify_date
+
+    """
+
+    identifier: str
+    name: str
+    street: str
+    start_date: datetime.datetime = field(converter=to_datetime_with_t)
+    end_date: datetime.datetime = field(converter=to_datetime_with_t)
+    last_modify_date: datetime.datetime = field(converter=to_datetime_with_t)

@@ -1,5 +1,5 @@
 # pywarsaw
-![actions](https://github.com/BrozenSenpai/pywarsaw/actions/workflows/python-package.yml/badge.svg)[![Project Status: WIP – Initial development is in progress, but there has not yet been a stable, usable release suitable for the public.](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostatus.org/#wip)[![Documentation Status](https://readthedocs.org/projects/pywarsaw/badge/?version=latest)](https://pywarsaw.readthedocs.io/en/latest/?badge=latest)
+![actions](https://github.com/BrozenSenpai/pywarsaw/actions/workflows/python-package.yml/badge.svg)[![Documentation Status](https://readthedocs.org/projects/pywarsaw/badge/?version=latest)](https://pywarsaw.readthedocs.io/en/latest/?badge=latest)[![Project Status: WIP – Initial development is in progress, but there has not yet been a stable, usable release suitable for the public.](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostatus.org/#wip)[![Downloads](https://static.pepy.tech/badge/pywarsaw)](https://pepy.tech/project/pywarsaw)
 
 An unofficial asynchronous API wrapper for [Warsaw Open Data](https://api.um.warszawa.pl/).
 
@@ -116,13 +116,18 @@ The current status of work is:
 * trams and buses:
     * trams and buses :heavy_check_mark:
 * queuing systems :x:
-* road works :x:
+* road works:
+    * companies :heavy_check_mark:
+    * categories :heavy_check_mark:
+    * districts :heavy_check_mark:
+    * investments :heavy_check_mark:
+    * investments details :x:
 
 **Spatial data**
 * ATMs :x:
 * names of urban objects :x:
 * health :x:
-* bikes :x:
+* bikes :heavy_check_mark:
 * sport :x:
 * accommodation :x:
 

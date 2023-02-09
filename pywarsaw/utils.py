@@ -25,25 +25,25 @@ def flat_dict(d, parent_key="", sep="_", index=None):
 
 
 def to_datetime(f: str) -> datetime.datetime:
-    return (
-        datetime.datetime.strptime(f[:18], "%Y-%m-%d %H:%M:%S") if f is not None else f
-    )
+    return datetime.datetime.strptime(f[:18], "%Y-%m-%d %H:%M:%S") if f else f
 
 
 def to_datetime_with_12(f: str) -> datetime.datetime:
-    return (
-        datetime.datetime.strptime(f, "%d-%b-%y %H.%M.%S.%f %p") if f is not None else f
-    )
+    return datetime.datetime.strptime(f, "%d-%b-%y %H.%M.%S.%f %p") if f else f
 
 
 def to_date(f: int) -> datetime.date:
-    return datetime.datetime.strptime(str(f), "%Y%m%d").date() if f is not None else f
+    return datetime.datetime.strptime(str(f), "%Y%m%d").date() if f else f
 
 
 def to_time(f: str):
-    return datetime.datetime.strptime(f, "%H:%M:%S").time() if f is not None else f
+    return datetime.datetime.strptime(f, "%H:%M:%S").time() if f else f
 
 
 def comma_number_to_float(f: str) -> float:
     f = f.replace(",", ".")
-    return float(f) if f.isdigit() else f
+    return float(f) if f.replace(".", "").isdigit() else f
+
+
+def to_datetime_with_t(f: str) -> datetime.datetime:
+    return datetime.datetime.strptime(f, "%Y-%m-%dT%H:%M:%S") if f else f
